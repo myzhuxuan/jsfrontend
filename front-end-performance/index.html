@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Front-End Performance Inspector</title>
+  <style>
+    /* Some basic styling for the inspector tool */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #output {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Front-End Performance Inspector</h1>
+  <button onclick="inspectPage()">Inspect Page</button>
+  <div id="output"></div>
+
+  <script>
+    function inspectPage() {
+      const startTime = performance.now();
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "Inspecting page...";
+
+      // Simulate loading and processing time
+      setTimeout(() => {
+        // Calculate load time
+        const endTime = performance.now();
+        const loadTime = endTime - startTime;
+        outputDiv.innerHTML = `Page loaded in ${loadTime.toFixed(2)} ms`;
+
+        // Simulate errors and warnings (for demonstration purposes)
+        const randomNumber = Math.random();
+        if (randomNumber < 0.2) {
+          outputDiv.innerHTML += "<br><span style='color: red;'>Error: Failed to load resource.</span>";
+        } else if (randomNumber < 0.5) {
+          outputDiv.innerHTML += "<br><span style='color: orange;'>Warning: Slow loading resources.</span>";
+        }
+      }, 2000); // Simulate a 2-second page load
+    }
+  </script>
+</body>
+</html>
